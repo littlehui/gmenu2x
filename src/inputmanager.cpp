@@ -290,8 +290,13 @@ bool InputManager::getButton(Button *button, bool wait) {
 	if (i == BUTTON_TYPE_SIZE)
 		return false;
 
-	if (wait)
+	bool screenState = PowerSaver::getInstance()->getScreenState();
+	if (wait) {
 		PowerSaver::getInstance()->resetScreenTimer();
+		
+		// if screen was previously off (false), then don't process the input
+		return screenState;
+	}
 
 	return true;
 }
