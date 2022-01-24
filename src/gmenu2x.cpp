@@ -352,7 +352,7 @@ void GMenu2X::initMenu() {
 
 	// Add action links in the applications section.
 	auto appIdx = menu->sectionNamed("applications");
-	menu->addActionLink(appIdx, "Explorer",
+	menu->addActionLink(appIdx, tr["Explorer"],
 			bind(&GMenu2X::explorer, this),
 			tr["Launch an application"],
 			"skin:icons/explorer.png");
