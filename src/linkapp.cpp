@@ -238,11 +238,17 @@ LinkApp::LinkApp(GMenu2X& gmenu2x, string const& linkfile, bool deletable)
 		} else if (name == "selectorbrowser") {
 			if (value=="false") selectorbrowser = false;
 		} else if (!isOpk()) {
-			if (name == "title") {
+			if (name == "title" && getTitle().empty()) {
 				setTitle(value);
-			} else if (name == "description") {
+			} else if (name == "title[" + gmenu2x.tr["Lng"] +"]") {
+				setTitle(value);
+			} else if (name == "description" && getDescription().empty()) {
 				setDescription(value);
-			} else if (name == "launchmsg") {
+			} else if (name == "description[" + gmenu2x.tr["Lng"] +"]") {
+				setDescription(value);
+			} else if (name == "launchmsg" && launchMsg.empty()) {
+				launchMsg = value;
+			} else if (name == "launchmsg[" + gmenu2x.tr["Lng"] +"]") {
 				launchMsg = value;
 			} else if (name == "icon") {
 				setIcon(value);
