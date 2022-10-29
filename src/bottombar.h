@@ -18,6 +18,7 @@ public:
 
 	void enableManualIcon(bool enable);
 	void showCpuFreq(unsigned long mhz = 0);
+	void updateBattery();
 
 private:
 	GMenu2X& gmenu2x;

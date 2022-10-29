@@ -90,6 +90,11 @@ void BottomBar::showCpuFreq(unsigned long mhz)
 	cpufreq = mhz;
 }
 
+void BottomBar::updateBattery()
+{
+	battery.update();
+}
+
 bool BottomBar::updateDiskFree()
 {
 	unsigned long free = 0, total = 0;

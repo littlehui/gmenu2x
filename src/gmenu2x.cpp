@@ -124,6 +124,12 @@ static void quit_all(int err) {
 	exit(err);
 }
 
+static void update_battery(int err)
+{
+	app->bottomBar->updateBattery();
+	request_repaint();
+}
+
 const string GMenu2X::getHome()
 {
 	return gmenu2x_home;
@@ -144,6 +150,7 @@ int main(int /*argc*/, char * /*argv*/[]) {
 	set_handler(SIGINT, &quit_all);
 	set_handler(SIGSEGV, &quit_all);
 	set_handler(SIGTERM, &quit_all);
+	set_handler(SIGUSR1, &update_battery);
 
 	char *home = getenv("HOME");
 	if (home == NULL) {

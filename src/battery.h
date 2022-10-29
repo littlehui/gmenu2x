@@ -21,8 +21,13 @@ public:
 	 */
 	std::shared_ptr<OffscreenSurface> getIcon();
 
-private:
+	/**
+	 * Forces an update of the battery status.
+	 * By default, the status is only updated once every 60 seconds.
+	 */
 	void update();
+
+private:
 	unsigned short getBatteryLevel();
 
 	SurfaceCollection& sc;

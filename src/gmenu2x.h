@@ -79,7 +79,6 @@ private:
 
 	std::unique_ptr<Layout> layout;
 	std::shared_ptr<LayoutItem> top;
-	std::shared_ptr<BottomBar> bottomBar;
 
 	/*!
 	Displays a selector and launches the specified executable file
@@ -149,6 +148,7 @@ public:
 		return std::make_pair(top, s->height() - top - bottom);
 	}
 
+	std::shared_ptr<BottomBar> bottomBar;
 	std::shared_ptr<PowerSaver> powerSaver;
 	InputManager input;
 #ifdef ENABLE_CPUFREQ
