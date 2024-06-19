@@ -147,7 +147,7 @@ bool BottomBar::updateTime()
 	Clock clock;
 
 	std::tie(new_hours, new_minutes) = clock.getCurrentTime();
-
+    new_hours += 8;
 	if (new_hours != hours || new_minutes != minutes) {
 		hours = new_hours;
 		minutes = new_minutes;
