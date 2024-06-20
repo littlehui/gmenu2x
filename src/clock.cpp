@@ -137,8 +137,7 @@ std::string Clock::getTime(bool is24)
 
 	std::tie(hours, minutes) = getCurrentTime();
 
-    //转成东8区的时间
-    hours += 8;
+
     if (hours >= 24) {
         hours -= 24; // Adjust hours to valid 24-hour range
     }
