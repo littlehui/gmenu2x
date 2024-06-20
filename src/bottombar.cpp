@@ -147,7 +147,7 @@ bool BottomBar::updateTime()
 	Clock clock;
 
 	std::tie(new_hours, new_minutes) = clock.getCurrentTime();
-    new_hours += 8;
+    //new_hours += 8;
 	if (new_hours != hours || new_minutes != minutes) {
 		hours = new_hours;
 		minutes = new_minutes;
@@ -168,10 +168,14 @@ void BottomBar::updateTimeText()
 	ss.fill('0');
 
 	/* C++ streams are beyond stupid */
-	ss << std::setfill('0') << std::setw(2) << (timeIs24 ? hours : hours % 12);
+	int hours_text = hours + 8;
+	if (hours_text > 24) {
+	    hours_text %= 24;
+	}
+	ss << std::setfill('0') << std::setw(2) << (timeIs24 ? hours_text : hours_text % 12);
 	ss << ":" << std::setfill('0') << std::setw(2) << minutes;
 	if (!timeIs24)
-		ss << (hours >= 12 ? "pm" : "am");
+		ss << (hours_text >= 12 ? "pm" : "am");
 
 	auto text_s = gmenu2x.font->render(ss.str());
 	auto new_clock_text = std::make_shared<LayoutSurface>(text_s);
